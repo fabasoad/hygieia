@@ -9,13 +9,13 @@ LIB_DIR_PATH="${SRC_DIR_PATH}/lib"
 . "${LIB_DIR_PATH}/logging.sh"
 
 main() {
-  log_info "Running automation scripts started."
+  log_info "[main] Running automation started."
   for dir in "${HOOKS_DIR_PATH}"/*; do
     if [ -d "${dir}" ] && [ -f "${dir}/main.sh" ]; then
       "${dir}"/main.sh
     fi
   done
-  log_info "Running automation scripts completed."
+  log_info "[main] Running automation completed."
 }
 
 main "$@"
