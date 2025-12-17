@@ -10,7 +10,7 @@ LIB_DIR_PATH="${SRC_DIR_PATH}/lib"
 
 setup_pre_commit() {
   if command -v pre-commit >/dev/null 2>&1; then
-    log_info "pre-commit is found at $(which pre-commit). Installation skipped."
+    log_info_hook "pre" "pre-commit-prettier" "pre-commit is found at $(which pre-commit). Installation skipped."
   else
     pip install pre-commit
   fi
@@ -30,7 +30,7 @@ setup_yq() {
       os="darwin"
       ;;
     *)
-      log_error "Unsupported OS: ${RUNNER_OS:-"N/A"}"
+      log_error_hook "pre" "pre-commit-prettier" "Unsupported OS: ${RUNNER_OS:-"N/A"}"
       exit 0
       ;;
   esac
@@ -42,24 +42,25 @@ setup_yq() {
       arch="arm64"
       ;;
     *)
-      log_error "Unsupported architecture: ${RUNNER_ARCH:-"N/A"}"
+      log_error_hook "pre" "pre-commit-prettier" "Unsupported architecture: ${RUNNER_ARCH:-"N/A"}"
       exit 0
       ;;
   esac
   if command -v yq${ext} >/dev/null 2>&1; then
-    log_info "yq is found at $(which yq${ext}). Installation skipped."
+    log_info_hook "pre" "pre-commit-prettier" "yq is found at $(which yq${ext}). Installation skipped."
   else
     bundle="yq_${os}_${arch}${ext}"
     gh release download --repo mikefarah/yq -p "${bundle}"
-    log_info "$(./${bundle} --version) installed successfully."
+    log_info_hook "pre" "pre-commit-prettier" "$(./${bundle} --version) installed successfully."
     mv ${bundle} "${BIN_DIR_PATH}/yq${ext}"
   fi
 }
 
 main() {
-  log_info "Running pre-commit-prettier pre-automation script..."
+  log_info_hook "pre" "pre-commit-prettier" "Started"
   setup_pre_commit
   setup_yq
+  log_info_hook "pre" "pre-commit-prettier" "Completed"
 }
 
 main "$@"

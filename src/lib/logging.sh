@@ -20,3 +20,11 @@ log_warn() {
 log_error() {
   log "error" "${1}"
 }
+
+log_info_hook() {
+  log_info "[${1}::${2}] ${3}"
+}
+
+log_error_hook() {
+  log_error "[${1}::${2}] ${3}"
+}

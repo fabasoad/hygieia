@@ -18,7 +18,7 @@ commit_changes() {
     log_info "There are changes were made by automation scripts. Committing the changes..."
     git commit -m "chore: bump dependencies to the latest version"
     git push origin main
-    ${UTILS_DIR_PATH}/run.sh "get_repo_name" >> "${CHANGED_REPOS_FILE_PATH}"
+    "${UTILS_DIR_PATH}"/run.sh "get_repo_name" >> "${CHANGED_REPOS_FILE_PATH}"
   else
     log_info "No changes were made by automation scripts"
   fi
@@ -33,7 +33,7 @@ validate_no_changes_left() {
   if [ "${exit_code}" -eq 1 ]; then
     changed_files=$(git diff --name-only | awk '{printf "%s%s", sep, $0; sep = ", " } END {print ""}')
     log_warn "There are changes left after running automation scripts: ${changed_files}"
-    echo "::warning title=Changes left in $(${UTILS_DIR_PATH}/run.sh "get_repo_name")::${changed_files}"
+    echo "::warning title=Changes left in $("${UTILS_DIR_PATH}"/run.sh "get_repo_name")::${changed_files}"
   fi
 }
 

@@ -9,10 +9,11 @@ LIB_DIR_PATH="${SRC_DIR_PATH}/lib"
 . "${LIB_DIR_PATH}/logging.sh"
 
 main() {
-  log_info "Running pre-commit post-automation script..."
+  log_info_hook "post" "pre-commit" "Started"
   if command -v pre-commit >/dev/null 2>&1; then
     pip uninstall -y pre-commit
   fi
+  log_info_hook "post" "pre-commit" "Completed"
 }
 
 main "$@"

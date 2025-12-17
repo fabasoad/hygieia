@@ -10,9 +10,9 @@ LIB_DIR_PATH="${SRC_DIR_PATH}/lib"
 
 main() {
   log_info "Running automation scripts started."
-  for dir in ${HOOKS_DIR_PATH}/*; do
+  for dir in "${HOOKS_DIR_PATH}"/*; do
     if [ -d "${dir}" ] && [ -f "${dir}/main.sh" ]; then
-      ${dir}/main.sh
+      "${dir}"/main.sh
     fi
   done
   log_info "Running automation scripts completed."

@@ -9,7 +9,7 @@ LIB_DIR_PATH="${SRC_DIR_PATH}/lib"
 . "${LIB_DIR_PATH}/logging.sh"
 
 main() {
-  log_info "Running ncu automation script..."
+  log_info_hook "main" "ncu" "Started"
   if [ -f "package.json" ]; then
     ncu --upgrade --target patch
     if [ -f yarn.lock ]; then
@@ -29,8 +29,9 @@ main() {
     fi
     git add dist/
   else
-    log_info "package.json file is not found"
+    log_info_hook "main" "ncu" "package.json file is not found"
   fi
+  log_info_hook "main" "ncu" "Completed"
 }
 
 main "$@"

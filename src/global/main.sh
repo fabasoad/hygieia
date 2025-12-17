@@ -31,7 +31,7 @@ main() {
     --visibility public \
     --affiliations owner \
     --regex "${input_regex}" \
-    "${AUTOMATION_DIR_PATH}"/run.sh
+    "${SRC_DIR_PATH}"/run.sh
 
   post_process
 }
