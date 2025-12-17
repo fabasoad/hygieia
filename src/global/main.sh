@@ -2,8 +2,7 @@
 
 SCRIPT_PATH=$(realpath "$0")
 GLOBAL_DIR_PATH=$(dirname "${SCRIPT_PATH}")
-AUTOMATION_DIR_PATH=$(dirname "${GLOBAL_DIR_PATH}")
-SRC_DIR_PATH=$(dirname "${AUTOMATION_DIR_PATH}")
+SRC_DIR_PATH=$(dirname "${GLOBAL_DIR_PATH}")
 LIB_DIR_PATH="${SRC_DIR_PATH}/lib"
 
 . "${LIB_DIR_PATH}/logging.sh"
@@ -32,7 +31,7 @@ main() {
     --visibility public \
     --affiliations owner \
     --regex "${input_regex}" \
-    "${AUTOMATION_DIR_PATH}"/run.sh
+    "${SRC_DIR_PATH}"/run.sh
 
   post_process
 }
