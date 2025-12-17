@@ -14,7 +14,7 @@ validate_repo() {
   log_info "[pre] Checking whether current repo is a fork or not"
   if [ "$(echo "${json}" | jq -r '.isFork')" = "true" ]; then
     log_info "[pre] Current repo is a fork. Skipping."
-    exit 0
+    exit 1
   else
     log_info "[pre] Current repo is not a fork. Continuing."
   fi
@@ -22,7 +22,7 @@ validate_repo() {
   log_info "[pre] Checking whether current repo is archived or not"
   if [ "$(echo "${json}" | jq -r '.isArchived')" = "true" ]; then
     log_info "[pre] Current repo is archived. Skipping."
-    exit 0
+    exit 1
   else
     log_info "[pre] Current repo is not archived. Continuing."
   fi
