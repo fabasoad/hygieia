@@ -9,20 +9,25 @@ LIB_DIR_PATH="${SRC_DIR_PATH}/lib"
 . "${LIB_DIR_PATH}/logging.sh"
 
 cleanup_environment() {
+  log_info "[post] Cleaning up environment started"
   rm -rf "${BIN_DIR_PATH}"
   rm -rf "${CACHE_DIR_PATH}"
+  log_info "[post] Cleaning up environment completed"
 }
 
-main() {
-  log_info "Cleaning up environment..."
-  cleanup_environment
-  log_info "Running post-automation scripts started."
+running_hooks() {
+  log_info "[post] Running hooks started"
   for dir in "${HOOKS_DIR_PATH}"/*; do
     if [ -d "${dir}" ] && [ -f "${dir}/post.sh" ]; then
       "${dir}"/post.sh
     fi
   done
-  log_info "Running post-automation scripts completed."
+  log_info "[post] Running hooks completed"
+}
+
+main() {
+  cleanup_environment
+  running_hooks
 }
 
 main "$@"
