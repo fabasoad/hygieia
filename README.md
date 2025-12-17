@@ -23,3 +23,7 @@ file within all `fabasoad` repositories.
 
 This script is used to bump prettier hook version in the `.pre-commit-config.yaml`
 file within all `fabasoad` repositories.
+
+## Contributions
+
+![Alt](https://repobeats.axiom.co/api/embed/06431e53b6ddc618cf0458490849e3597c39411e.svg "Repobeats analytics image")
