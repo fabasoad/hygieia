@@ -18,8 +18,8 @@ main() {
     elif command -v zypper >/dev/null 2>&1; then
       zypper install asdf
     elif command -v go >/dev/null 2>&1; then
-      apt install -y git bash
-      go install github.com/asdf-vm/asdf/cmd/asdf
+      sudo apt install -y git bash
+      go install github.com/asdf-vm/asdf/cmd/asdf@latest
     else
       log_warn_hook "pre" "asdf" "cannot be installed"
     fi
