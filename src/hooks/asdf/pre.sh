@@ -18,7 +18,12 @@ main() {
     elif command -v zypper >/dev/null 2>&1; then
       zypper install asdf
     elif command -v go >/dev/null 2>&1; then
-      sudo apt install -y git bash
+      if ! command -v git >/dev/null 2>&1; then
+        sudo apt install -y git
+      fi
+      if ! command -v bash >/dev/null 2>&1; then
+        sudo apt install -y bash
+      fi
       go install github.com/asdf-vm/asdf/cmd/asdf@latest
       echo "$(go env GOPATH)/bin" >> "$GITHUB_PATH"
     else
