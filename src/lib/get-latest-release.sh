@@ -8,7 +8,7 @@ get_latest_release() {
   if [ ! -f "${cache_file_path}" ]; then
     version=$(gh api \
       -H "Accept: application/vnd.github+json" \
-      -H "X-GitHub-Api-Version: 2022-11-28" \
+      -H "X-GitHub-Api-Version: 2026-03-10" \
       "/repos/${repo}/releases?per_page=1" \
       --jq '.[].tag_name')
     echo "${version}" > "${cache_file_path}"
