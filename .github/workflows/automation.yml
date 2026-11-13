@@ -29,9 +29,10 @@ jobs:
     permissions: {}
     steps:
       - name: Checkout ${{ github.repository }}
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           token: "${{ secrets.GH_TOKEN }}"
+          persist-credentials: "false"
 
       - name: Install mtoohey31/gh-foreach
         run: gh extension install mtoohey31/gh-foreach
