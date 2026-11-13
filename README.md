@@ -17,16 +17,6 @@ at 07:00 JST.
 This script is used to bump asdf dependencies versions in the `.tool-versions` file
 within all `fabasoad` repositories.
 
-### ncu
-
-This script is used to bump npm dependencies versions in the `package.json` file
-within all `fabasoad` repositories.
-
-### pre-commit
-
-This script is used to bump the pre-commit hooks version in the `.pre-commit-config.yaml`
-file within all `fabasoad` repositories.
-
 ### pre-commit prettier
 
 This script is used to bump prettier hook version in the `.pre-commit-config.yaml`
