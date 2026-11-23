@@ -6,6 +6,16 @@
 Hygieia is a goddess of health (Greek: ὑγίεια), cleanliness and hygiene..... of
 my repos 🧹
 
+## This is not a pre-commit hook repo
+
+This repository cannot be used as a `repo:` in `.pre-commit-config.yaml`.
+It has no `.pre-commit-hooks.yaml`, so adding it there will fail. It is a
+standalone automation tool for maintaining `fabasoad` repositories, not a
+hook repo. The "Hooks" below are its own maintenance scripts, not
+pre-commit hooks. For actual pre-commit hooks, see the hook repos under
+<https://github.com/fabasoad/>, for example `pre-commit-snyk`,
+`pre-commit-grype` and `pre-commit-checkstyle`.
+
 ## Hooks
 
 Hooks is a set of scripts that automate various tasks across multiple repositories.
